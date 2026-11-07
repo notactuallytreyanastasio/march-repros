@@ -1,0 +1,8 @@
+-- Nothing references Zeta. It only shares the type name Tally with Alpha.
+mod Zeta do
+  type Tally = { m : String }
+
+  fn two() : Int do
+    Gamma.missing()
+  end
+end

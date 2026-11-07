@@ -1,0 +1,8 @@
+mod Alpha do
+  type Tally = { n : Int }
+
+  fn one() : Int do
+    let t : Tally = { n: 1 }
+    t.n
+  end
+end

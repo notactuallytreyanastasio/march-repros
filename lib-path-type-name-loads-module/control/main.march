@@ -1,0 +1,7 @@
+mod Main do
+  needs IO.Console
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(int_to_string(Alpha.one()))
+  end
+end

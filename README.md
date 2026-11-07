@@ -31,3 +31,4 @@ MARCH_BIN=/path/to/march/bin ./run.sh
 | [`ord-operators-ignored`](ord-operators-ignored/) | `<`, `<=`, `>`, `>=` ignore the Ord impl on native and JS backends | [march#1172](https://github.com/march-language/march/issues/1172) |
 | [`record-literal-paren-application`](record-literal-paren-application/) | A `(` line after `}`, `do ... end` or an interpolated string still parses as a call | [march#1179](https://github.com/march-language/march/issues/1179) |
 | [`target-float-divergence`](target-float-divergence/) | string_to_float accepts a different grammar on --target js (inf, nan, "") | [march#1178](https://github.com/march-language/march/issues/1178) |
+| [`lib-path-type-name-loads-module`](lib-path-type-name-loads-module/) | A shared type name loads unreferenced modules from `MARCH_LIB_PATH` | [march#1183](https://github.com/march-language/march/issues/1183) |

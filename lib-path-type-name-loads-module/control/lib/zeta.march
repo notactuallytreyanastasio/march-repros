@@ -1,0 +1,8 @@
+-- Control: the same module with its type renamed.
+mod Zeta do
+  type Other = { m : String }
+
+  fn two() : Int do
+    Gamma.missing()
+  end
+end
