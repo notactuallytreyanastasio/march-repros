@@ -1,0 +1,14 @@
+mod Shapes do
+  -- A record `Table`, and a record that holds one.
+  type Table = { width : Float }
+
+  type Holder = { table : Table }
+
+  fn holder() : Holder do
+    { table: { width: 2.0 } }
+  end
+
+  fn width(h : Holder) : Float do
+    h.table.width
+  end
+end

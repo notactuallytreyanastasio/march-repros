@@ -1,0 +1,15 @@
+mod Main do
+  -- Another record called `Table`, holding a Shapes.Holder (which holds a Shapes.Table).
+  needs IO.Console
+
+  type Table = { at : Shapes.Holder, key : Option(Int) }
+
+  fn make() : Table do
+    { at: Shapes.holder(), key: None }
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let t = make()
+    println(float_to_string(Shapes.width(t.at)))
+  end
+end

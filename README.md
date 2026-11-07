@@ -34,3 +34,4 @@ MARCH_BIN=/path/to/march/bin ./run.sh
 | [`lib-path-type-name-loads-module`](lib-path-type-name-loads-module/) | A shared type name loads unreferenced modules from `MARCH_LIB_PATH` | [march#1183](https://github.com/march-language/march/issues/1183) |
 | [`float-add-zero-keeps-negative-zero`](float-add-zero-keeps-negative-zero/) | Compiled `x +. 0.0` keeps a negative zero on native and JS | [march#1185](https://github.com/march-language/march/issues/1185) |
 | [`json-control-escape`](json-control-escape/) | Json.to_string leaves U+0000-U+001F (except \b\t\n\f\r) unescaped | [march#1193](https://github.com/march-language/march/issues/1193) |
+| [`type-name-captured-across-modules`](type-name-captured-across-modules/) | A local type named like another module's type is substituted into that module's record fields (and can hang the build) | [march#1199](https://github.com/march-language/march/issues/1199) |

@@ -1,0 +1,9 @@
+sat
+n	0
+h	(fp #b0 #b00000000001 #x0000000000001)
+i	0
+len$sorted	0
+frac	(_ -zero 11 53)
+fl	1
+|$ru_0:Stats.clamp_idx|	true
+clamped	(- 1)

@@ -1,0 +1,5 @@
+sat
+hi	0
+s	(Slice (PVec 2 3 TrieEmpty (as Nil M_List)) 4 5)
+i	(- 1)
+arr	(PVec 0 0 TrieEmpty (as Nil M_List))

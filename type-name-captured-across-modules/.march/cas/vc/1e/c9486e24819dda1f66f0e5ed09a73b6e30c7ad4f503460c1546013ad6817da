@@ -1,0 +1,8 @@
+sat
+len$sorted	0
+h	(fp #b0 #b00000000001 #x0000000000001)
+i	(- 1)
+clamped	(- 1)
+frac	(_ -zero 11 53)
+n	1
+fl	0
