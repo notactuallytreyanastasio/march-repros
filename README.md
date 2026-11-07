@@ -15,19 +15,19 @@ MARCH_BIN=/path/to/march/bin ./run.sh
 
 ## Repros
 
-| Repro | Problem |
-|---|---|
-| [`capability-ceiling-misses-foreign`](capability-ceiling-misses-foreign/) | Docs vs compiler: `cap pure`/`cap deterministic` accept monotonic clock reads; `Js.Dom` passes a no-`needs` module |
-| [`forge-format-deletes-code`](forge-format-deletes-code/) | forge format / march fmt overwrite valid code with a literal "..." |
-| [`forge-format-drops-parens`](forge-format-drops-parens/) | forge format drops parens around if/match/pipe operands, breaking or changing code |
-| [`install-sh-sha256sum-macos`](install-sh-sha256sum-macos/) | install.sh fails checksum verification on macOS when Apple's /sbin/sha256sum is first on PATH |
-| [`js-float-literal-truncation`](js-float-literal-truncation/) | --target js emits Float literals with 12 significant digits |
-| [`js-module-let-closure`](js-module-let-closure/) | --target js: module-level let outside the entry module reads as a closure object |
-| [`js-test-blocks-run-zero`](js-test-blocks-run-zero/) | march --target js --test compiles test blocks but never runs them, exits 0 |
-| [`missing-output-dir-ice`](missing-output-dir-ice/) | march --target js reports an unwritable -o path as an internal compiler error |
-| [`native-none-float-field-segfault`](native-none-float-field-segfault/) | Native: let-bound None used as Option(Float) segfaults at address 0x8 |
-| [`native-record-eq-shared-helper`](native-record-eq-shared-helper/) | Compiled == on records shares one __march_eq_Ptr across all record types |
-| [`negate-shadow-recursion`](negate-shadow-recursion/) | JS backend ignores a user fn named negate or not, unless it gets inlined |
-| [`ord-operators-ignored`](ord-operators-ignored/) | `<`, `<=`, `>`, `>=` ignore the Ord impl on native and JS backends |
-| [`record-literal-paren-application`](record-literal-paren-application/) | A `(` line after `}`, `do ... end` or an interpolated string still parses as a call |
-| [`target-float-divergence`](target-float-divergence/) | string_to_float accepts a different grammar on --target js (inf, nan, "") |
+| Repro | Problem | Issue |
+|---|---|---|
+| [`capability-ceiling-misses-foreign`](capability-ceiling-misses-foreign/) | Docs vs compiler: `cap pure`/`cap deterministic` accept monotonic clock reads; `Js.Dom` passes a no-`needs` module | [march#1180](https://github.com/march-language/march/issues/1180) |
+| [`forge-format-deletes-code`](forge-format-deletes-code/) | forge format / march fmt overwrite valid code with a literal "..." | [march#1174](https://github.com/march-language/march/issues/1174) |
+| [`forge-format-drops-parens`](forge-format-drops-parens/) | forge format drops parens around if/match/pipe operands, breaking or changing code | [march#1175](https://github.com/march-language/march/issues/1175) |
+| [`install-sh-sha256sum-macos`](install-sh-sha256sum-macos/) | install.sh fails checksum verification on macOS when Apple's /sbin/sha256sum is first on PATH | [march#1182](https://github.com/march-language/march/issues/1182) |
+| [`js-float-literal-truncation`](js-float-literal-truncation/) | --target js emits Float literals with 12 significant digits | [march#1169](https://github.com/march-language/march/issues/1169) |
+| [`js-module-let-closure`](js-module-let-closure/) | --target js: module-level let outside the entry module reads as a closure object | [march#1170](https://github.com/march-language/march/issues/1170) |
+| [`js-test-blocks-run-zero`](js-test-blocks-run-zero/) | march --target js --test compiles test blocks but never runs them, exits 0 | [march#1176](https://github.com/march-language/march/issues/1176) |
+| [`missing-output-dir-ice`](missing-output-dir-ice/) | march --target js reports an unwritable -o path as an internal compiler error | [march#1181](https://github.com/march-language/march/issues/1181) |
+| [`native-none-float-field-segfault`](native-none-float-field-segfault/) | Native: let-bound None used as Option(Float) segfaults at address 0x8 | [march#1173](https://github.com/march-language/march/issues/1173) |
+| [`native-record-eq-shared-helper`](native-record-eq-shared-helper/) | Compiled == on records shares one __march_eq_Ptr across all record types | [march#1171](https://github.com/march-language/march/issues/1171) |
+| [`negate-shadow-recursion`](negate-shadow-recursion/) | JS backend ignores a user fn named negate or not, unless it gets inlined | [march#1177](https://github.com/march-language/march/issues/1177) |
+| [`ord-operators-ignored`](ord-operators-ignored/) | `<`, `<=`, `>`, `>=` ignore the Ord impl on native and JS backends | [march#1172](https://github.com/march-language/march/issues/1172) |
+| [`record-literal-paren-application`](record-literal-paren-application/) | A `(` line after `}`, `do ... end` or an interpolated string still parses as a call | [march#1179](https://github.com/march-language/march/issues/1179) |
+| [`target-float-divergence`](target-float-divergence/) | string_to_float accepts a different grammar on --target js (inf, nan, "") | [march#1178](https://github.com/march-language/march/issues/1178) |
