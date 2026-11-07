@@ -33,3 +33,4 @@ MARCH_BIN=/path/to/march/bin ./run.sh
 | [`target-float-divergence`](target-float-divergence/) | string_to_float accepts a different grammar on --target js (inf, nan, "") | [march#1178](https://github.com/march-language/march/issues/1178) |
 | [`lib-path-type-name-loads-module`](lib-path-type-name-loads-module/) | A shared type name loads unreferenced modules from `MARCH_LIB_PATH` | [march#1183](https://github.com/march-language/march/issues/1183) |
 | [`float-add-zero-keeps-negative-zero`](float-add-zero-keeps-negative-zero/) | Compiled `x +. 0.0` keeps a negative zero on native and JS | [march#1185](https://github.com/march-language/march/issues/1185) |
+| [`json-control-escape`](json-control-escape/) | Json.to_string leaves U+0000-U+001F (except \b\t\n\f\r) unescaped | [march#1193](https://github.com/march-language/march/issues/1193) |

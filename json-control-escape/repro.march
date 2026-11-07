@@ -1,0 +1,11 @@
+-- Json.to_string writes control characters raw: only \b \t \n \f \r get escaped.
+-- RFC 8259 section 7 says all of U+0000-U+001F must be escaped, so strict parsers
+-- (JavaScript's JSON.parse, Python's json.loads) reject the output.
+mod Repro do
+  needs IO.Console
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let s = string_from_chars([char_from_int(97), char_from_int(7), char_from_int(98), char_from_int(11), char_from_int(99), char_from_int(31)])
+    println(Json.to_string(Json.Str(s)))
+  end
+end

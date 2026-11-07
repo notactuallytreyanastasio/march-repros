@@ -1,0 +1,4 @@
+sat
+len$xs	1
+|$ru_0:List.length_onto|	true
+xs	Nil

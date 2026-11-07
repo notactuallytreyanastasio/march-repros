@@ -1,0 +1,5 @@
+sat
+len$xs	1
+idx	(- 1)
+xs	(Cons Elem!val!0 Nil)
+n	1

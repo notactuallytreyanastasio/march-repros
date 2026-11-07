@@ -1,0 +1,5 @@
+sat
+p	(_ -zero 11 53)
+len$xs	1
+i	(- 1)
+len$sorted	0

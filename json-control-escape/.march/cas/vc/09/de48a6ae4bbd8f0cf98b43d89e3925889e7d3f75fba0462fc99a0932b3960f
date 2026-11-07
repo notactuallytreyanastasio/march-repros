@@ -1,0 +1,5 @@
+sat
+i	(- 1)
+state	(- 1)
+plen	0
+nodes	(PVec 0 0 TrieEmpty (as Nil M_List))

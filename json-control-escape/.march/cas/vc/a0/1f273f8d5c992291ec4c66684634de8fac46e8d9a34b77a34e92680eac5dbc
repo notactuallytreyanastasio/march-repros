@@ -1,0 +1,7 @@
+sat
+nodes2	(PVec 1 0 TrieEmpty (as Nil M_List))
+i	(- 1)
+nodes	(PVec 0 0 TrieEmpty (as Nil M_List))
+state	0
+plen	0
+new_id	0

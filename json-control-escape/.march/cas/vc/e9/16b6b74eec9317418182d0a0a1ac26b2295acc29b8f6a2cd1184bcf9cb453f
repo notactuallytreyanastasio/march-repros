@@ -1,0 +1,7 @@
+sat
+h	(fp #b0 #b00000000001 #x0000000000002)
+fl	8365
+n	0
+|$ru_0:Stats.clamp_idx|	true
+len$sorted	0
+frac	(fp #b1 #b00000000001 #x0000000000001)

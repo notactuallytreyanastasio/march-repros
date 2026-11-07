@@ -1,0 +1,7 @@
+sat
+i	0
+len$sorted	0
+p	(_ -zero 11 53)
+len$xs	1
+xs	(Cons Elem!val!0 Nil)
+n	0
