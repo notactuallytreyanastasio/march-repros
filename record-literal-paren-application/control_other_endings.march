@@ -1,0 +1,61 @@
+mod ControlOtherEndings do
+  needs IO.Console
+
+  fn identity(x) do
+    x
+  end
+
+  fn negate(x) do
+    0 - x
+  end
+
+  -- The two `(` examples from specs/lang/surface-syntax.md "Newline-glom",
+  -- with `identity` and `negate` defined above.
+  fn after_int() do
+    let b = 10
+    (negate(b))
+  end
+
+  fn after_ident() do
+    let f = identity
+    (5)
+    f(7)
+  end
+
+  -- Other tokens that end the previous line, each followed by a `(` line.
+  fn after_bracket() do
+    let xs = [1]
+    (2)
+  end
+
+  fn after_string() do
+    let s = "plain"
+    (3)
+  end
+
+  fn after_if(b) do
+    let v = if b do
+      1
+    else
+      2
+    end
+    (4)
+  end
+
+  fn after_match(b) do
+    let v = match b do
+      true -> 1
+      false -> 2
+    end
+    (5)
+  end
+
+  fn main(_c : Cap(IO.Console)) do
+    IO.puts(int_to_string(after_int()))
+    IO.puts(int_to_string(after_ident()))
+    IO.puts(int_to_string(after_bracket()))
+    IO.puts(int_to_string(after_string()))
+    IO.puts(int_to_string(after_if(true)))
+    IO.puts(int_to_string(after_match(true)))
+  end
+end

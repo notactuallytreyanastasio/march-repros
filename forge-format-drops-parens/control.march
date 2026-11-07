@@ -1,0 +1,6 @@
+mod Repro do
+  fn pick(x : Int) : Int do
+    let y = if x > 0 do 1 else 0 end
+    2 * (y + 1)
+  end
+end

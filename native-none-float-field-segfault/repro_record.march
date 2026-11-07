@@ -1,0 +1,17 @@
+-- BUG: the originally reported shape. Prints 3, then crashes when the record's
+-- Option(Float) field is dropped.
+mod Repro do
+  needs IO.Console
+
+  type A = { n : Int, o : Option(Float) }
+
+  fn start(s : Int) : A do
+    let blank = { n: s, o: None }
+    blank
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let a = start(3)
+    println(int_to_string(a.n))
+  end
+end

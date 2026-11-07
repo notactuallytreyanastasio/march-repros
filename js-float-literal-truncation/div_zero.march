@@ -1,0 +1,9 @@
+-- Not part of the emitter bug: 1.0 /. 0.0 is specified to stop with
+-- "division by zero", but opt.fold replaces it with a literal.
+mod DivZero do
+  needs IO.Console
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(float_to_string(1.0 /. 0.0))
+  end
+end

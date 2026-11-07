@@ -1,0 +1,17 @@
+-- A user fn named `not`, reached through prefix `!` and an explicit call.
+-- The argument is computed so constant folding cannot remove the call. The
+-- println and the two call sites keep the fn from being inlined.
+mod NotShadow do
+  needs IO.Console
+
+  fn not(b : Bool) : Bool do
+    println("called")
+    b
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let t = int_to_string(1) == "1"
+    println(bool_to_string(!t))
+    println(bool_to_string(not(t)))
+  end
+end

@@ -1,0 +1,16 @@
+-- Same checks, but no long literal reaches the emitter: the literals here fit
+-- in 12 significant digits, and the division happens at run time.
+mod Control do
+  needs IO.Console
+
+  fn check(label : String, x : Float, exact : String) : () do
+    let verdict = if Some(x) == string_to_float(exact) do "exact" else "WRONG" end
+    println(label ++ ": " ++ verdict)
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let one = int_to_float(unwrap_or(string_to_int("1"), 0))
+    check("short literal", 0.1, "0.1")
+    check("runtime 1.0 /. 240.0", one /. 240.0, "0.004166666666666667")
+  end
+end

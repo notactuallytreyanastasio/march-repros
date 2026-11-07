@@ -1,0 +1,13 @@
+mod CapBound do
+  needs IO.Console
+
+  -- `f` is pure and calls nothing, but is reported as invoking a function value.
+  fn f() : Int needs () do
+    let r = { x: 1 }
+    (r.x + 1)
+  end
+
+  fn main(_c : Cap(IO.Console)) do
+    IO.puts(int_to_string(f()))
+  end
+end

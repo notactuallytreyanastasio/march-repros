@@ -1,0 +1,19 @@
+-- Control: wrong_answer.march with eq() in place of ==. Derived eq on a flat record
+-- compares field by field, so it does not use the shared helper.
+mod Main do
+  needs IO.Console
+
+  type Pair = { a : Int, b : Int }
+  derive Eq for Pair
+  type Triple = { c : Int, d : Int, e : Int }
+  derive Eq for Triple
+
+  fn main(_cap : Cap(IO.Console)) : () do
+    let p1 : Pair = { a: 1, b: 2 }
+    let p2 : Pair = { a: 1, b: 2 }
+    let t1 : Triple = { c: 1, d: 2, e: 3 }
+    let t2 : Triple = { c: 1, d: 2, e: 4 }
+    println(to_string(eq(p1, p2)))
+    println(to_string(eq(t1, t2)))
+  end
+end

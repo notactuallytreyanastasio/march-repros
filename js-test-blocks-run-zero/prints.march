@@ -1,0 +1,7 @@
+mod Prints do
+  needs IO.Console
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println("ran main")
+  end
+end

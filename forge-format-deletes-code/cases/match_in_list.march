@@ -1,0 +1,8 @@
+mod X do
+  fn g(n : Int) : List(Int) do
+    [match n do
+      0 -> 1
+      _ -> 2
+    end]
+  end
+end

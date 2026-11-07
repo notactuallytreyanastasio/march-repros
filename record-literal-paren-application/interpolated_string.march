@@ -1,0 +1,13 @@
+mod InterpolatedString do
+  needs IO.Console
+
+  fn f() : Int do
+    let n = 1
+    let s = "n=${n}"
+    (n + 1)
+  end
+
+  fn main(_c : Cap(IO.Console)) do
+    IO.puts(int_to_string(f()))
+  end
+end

@@ -1,0 +1,8 @@
+-- stdlib/bytes.march reads its module-level `let b64_alphabet` here.
+mod Main do
+  needs IO.Console
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(Bytes.encode_base64(Bytes.from_string("hi!")))
+  end
+end

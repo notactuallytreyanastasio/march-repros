@@ -1,0 +1,11 @@
+mod X do
+  fn f(x : Int) : Int do
+    let r = if x > 0 do
+      let y = 1
+      y
+    else
+      2
+    end
+    r
+  end
+end

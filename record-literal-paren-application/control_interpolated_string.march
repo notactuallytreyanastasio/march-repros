@@ -1,0 +1,14 @@
+mod ControlInterpolatedString do
+  needs IO.Console
+
+  -- Same as interpolated_string.march, with `)` as the last token of the `let`.
+  fn f() : Int do
+    let n = 1
+    let s = ("n=${n}")
+    (n + 1)
+  end
+
+  fn main(_c : Cap(IO.Console)) do
+    IO.puts(int_to_string(f()))
+  end
+end

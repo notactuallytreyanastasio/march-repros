@@ -1,0 +1,9 @@
+mod FailingWithMain do
+  test "must fail" do
+    assert (1 + 1 == 3)
+  end
+
+  fn main() : () do
+    ()
+  end
+end

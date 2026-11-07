@@ -1,0 +1,5 @@
+mod Failing do
+  test "must fail" do
+    assert (1 + 1 == 3)
+  end
+end

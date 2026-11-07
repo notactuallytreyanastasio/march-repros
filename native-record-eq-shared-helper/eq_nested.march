@@ -1,0 +1,24 @@
+-- eq() reaches the shared helper when records are nested: derived eq on Outer
+-- compares its record field with ==, and eq on a List compares elements with ==.
+mod Main do
+  needs IO.Console
+
+  type Pair = { a : Int, b : Int }
+  derive Eq for Pair
+  type Triple = { c : Int, d : Int, e : Int }
+  derive Eq for Triple
+  type Outer = { k : Triple, l : Int }
+  derive Eq for Outer
+
+  fn main(_cap : Cap(IO.Console)) : () do
+    let p1 : Pair = { a: 1, b: 2 }
+    let p2 : Pair = { a: 1, b: 2 }
+    let t1 : Triple = { c: 1, d: 2, e: 3 }
+    let t2 : Triple = { c: 1, d: 2, e: 4 }
+    let o1 : Outer = { k: t1, l: 0 }
+    let o2 : Outer = { k: t2, l: 0 }
+    println(to_string(p1 == p2))
+    println(to_string(eq(o1, o2)))
+    println(to_string(eq([t1], [t2])))
+  end
+end

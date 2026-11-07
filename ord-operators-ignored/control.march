@@ -1,0 +1,35 @@
+-- Same enum, payload type and hand-written impl, same questions, asked through `compare`.
+-- (Point is left out: on the JS target `compare` on Int fields does not build.)
+mod Control do
+  needs IO.Console
+
+  type Color = Red | Green
+  derive Eq, Ord for Color
+
+  type Shape = Ci(Int) | Sq(Int)
+  derive Eq, Ord for Shape
+
+  type Size = Small | Large
+  impl Eq(Size) do
+    fn eq(a, b) do rank(a) == rank(b) end
+  end
+  impl Ord(Size) do
+    fn compare(a, b) do rank(a) - rank(b) end
+  end
+  fn rank(s : Size) : Int do
+    match s do
+      | Small -> 0
+      | Large -> 1
+    end
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println("Red < Green     " ++ bool_to_string(compare(Red, Green) < 0))
+    println("Green > Red     " ++ bool_to_string(compare(Green, Red) > 0))
+    println("Green <= Red    " ++ bool_to_string(compare(Green, Red) <= 0))
+    println("Red >= Green    " ++ bool_to_string(compare(Red, Green) >= 0))
+    println("Small < Large   " ++ bool_to_string(compare(Small, Large) < 0))
+    println("Ci(1) < Sq(1)   " ++ bool_to_string(compare(Ci(1), Sq(1)) < 0))
+    println("Ci(1) >= Sq(1)  " ++ bool_to_string(compare(Ci(1), Sq(1)) >= 0))
+  end
+end

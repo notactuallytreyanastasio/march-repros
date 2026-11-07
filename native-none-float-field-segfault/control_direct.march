@@ -1,0 +1,15 @@
+-- CONTROL: repro.march without the let. Works.
+mod Repro do
+  needs IO.Console
+
+  fn start() : Option(Float) do
+    None
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    match start() do
+    | None -> println("none")
+    | Some(_) -> println("some")
+    end
+  end
+end

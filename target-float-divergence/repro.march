@@ -1,0 +1,36 @@
+-- string_to_float accepts a different grammar on each target.
+mod Repro do
+  needs IO.Console
+
+  fn parsed(s : String) : String do
+    match string_to_float(s) do
+    Some(f) -> "Some(" ++ float_to_string(f) ++ ")"
+    None -> "None"
+    end
+  end
+
+  fn p(s : String) do
+    println("[" ++ s ++ "] -> " ++ parsed(s))
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    p("inf")
+    p("-inf")
+    p("infinity")
+    p("INF")
+    p("nan")
+    p("NaN")
+    p("")
+    p(" ")
+    println("[tab] -> " ++ parsed("\t"))
+    p("1.5 ")
+    p("0b11")
+    p("0o17")
+    p("0x1p3")
+    p("1_000")
+    match Toml.parse("x = inf\ny = nan\n") do
+    Ok(v) -> println("toml: " ++ Toml.to_string(v))
+    Err(_) -> println("toml: parse error")
+    end
+  end
+end

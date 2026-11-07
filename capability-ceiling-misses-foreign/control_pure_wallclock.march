@@ -1,0 +1,16 @@
+-- Control: the wall-clock builtin is rejected under `cap pure`.
+mod Main do
+  needs IO
+
+  mod Pure do
+    cap pure
+    needs IO.Clock
+    fn f() : Int do
+      unix_time_ms(())
+    end
+  end
+
+  fn main(_c : Cap(IO)) : () do
+    println(int_to_string(Pure.f()))
+  end
+end

@@ -1,0 +1,11 @@
+mod Repro do
+  needs IO.Console
+
+  fn double(n : Int) : Int do
+    n * 2
+  end
+
+  fn main(_console : Cap(IO.Console)) : () do
+    println(int_to_string(1 + (3 |> double)))
+  end
+end

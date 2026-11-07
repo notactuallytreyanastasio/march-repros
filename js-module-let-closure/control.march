@@ -1,0 +1,10 @@
+-- Control: the same `let`, in the entry module. Correct on every target.
+mod Main do
+  needs IO.Console
+
+  let n = 7
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(int_to_string(n))
+  end
+end

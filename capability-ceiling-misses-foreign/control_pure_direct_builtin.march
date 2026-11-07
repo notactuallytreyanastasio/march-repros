@@ -1,0 +1,19 @@
+-- Control: the same read through the builtin itself is rejected under `cap pure`.
+mod Main do
+  needs IO
+
+  mod Pure do
+    cap pure
+    needs IO.FileRead
+    fn read() : Int do
+      match file_read("x") do
+        Ok(s) -> string_byte_length(s)
+        Err(_) -> 0
+      end
+    end
+  end
+
+  fn main(_c : Cap(IO)) : () do
+    println(int_to_string(Pure.read()))
+  end
+end

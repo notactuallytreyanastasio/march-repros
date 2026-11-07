@@ -1,0 +1,24 @@
+-- --target js: a module with no `needs` reaches Js.Dom and Js.Canvas.
+mod Main do
+  needs IO
+
+  mod Pure do
+    fn f() : Int do
+      match Js.Dom.find("x") do
+        Some(el) ->
+          Js.Dom.set_text(el, "changed")
+          match Js.Canvas.get_context(el) do
+            Some(ctx) ->
+              Js.Canvas.save(ctx)
+              2
+            None -> 1
+          end
+        None -> 0
+      end
+    end
+  end
+
+  fn main(_c : Cap(IO)) : () do
+    println(int_to_string(Pure.f()))
+  end
+end

@@ -1,0 +1,12 @@
+-- Derived Ord ignores variant payloads by design (specs/lang/surface-syntax.md),
+-- so `compare` is 0 and `<` should be false. Native `<` instead reads the raw
+-- payload, because this type has no heap cell.
+mod Newtype do
+  needs IO.Console
+  type Wrap = Wrap(Int)
+  derive Eq, Ord for Wrap
+  fn main(_c : Cap(IO.Console)) : () do
+    println("compare         " ++ int_to_string(compare(Wrap(1), Wrap(2))))
+    println("Wrap(1) < Wrap(2) " ++ bool_to_string(Wrap(1) < Wrap(2)))
+  end
+end

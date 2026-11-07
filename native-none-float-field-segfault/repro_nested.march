@@ -1,0 +1,16 @@
+-- BUG: same crash with an Option(Option(Int)) payload.
+mod Repro do
+  needs IO.Console
+
+  fn start() : Option(Option(Int)) do
+    let x = None
+    x
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    match start() do
+    | None -> println("none")
+    | Some(_) -> println("some")
+    end
+  end
+end

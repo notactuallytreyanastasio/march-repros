@@ -1,0 +1,31 @@
+-- Inputs on which every target agrees.
+mod Control do
+  needs IO.Console
+
+  fn parsed(s : String) : String do
+    match string_to_float(s) do
+    Some(f) -> "Some(" ++ float_to_string(f) ++ ")"
+    None -> "None"
+    end
+  end
+
+  fn p(s : String) do
+    println("[" ++ s ++ "] -> " ++ parsed(s))
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    p("1.5")
+    p("-42.5")
+    p("1e3")
+    p(".5")
+    p("5.")
+    p("0x10")
+    p("abc")
+    p("Infinity")
+    p("-Infinity")
+    match Toml.parse("x = 1.5\n") do
+    Ok(v) -> println("toml: " ++ Toml.to_string(v))
+    Err(_) -> println("toml: parse error")
+    end
+  end
+end

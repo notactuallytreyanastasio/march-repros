@@ -1,0 +1,13 @@
+mod DoBlockSilent do
+  needs IO.Console
+
+  -- The second statement is a parenthesised string whose value is discarded.
+  -- It should do nothing, and `g` should never be called.
+  fn main(_c : Cap(IO.Console)) do
+    let g = do
+      fn s -> IO.puts("g called with: " ++ s)
+    end
+    ("discarded")
+    IO.puts("end")
+  end
+end

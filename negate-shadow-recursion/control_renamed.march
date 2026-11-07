@@ -1,0 +1,14 @@
+-- Control: repro.march with the fn renamed. Correct on every backend.
+mod ControlRenamed do
+  needs IO.Console
+
+  fn flip(s : String) : String do
+    println("called")
+    s ++ "!"
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(flip("a"))
+    println(flip("b"))
+  end
+end

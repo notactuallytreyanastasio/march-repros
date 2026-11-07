@@ -1,0 +1,29 @@
+-- `cap pure` and `cap deterministic` only match direct builtin names: the
+-- stdlib wrappers pass once the module declares the matching `needs`.
+mod Main do
+  needs IO
+
+  mod Pure do
+    cap pure
+    needs IO.FileRead
+    fn read() : Int do
+      match File.read("wrapper_with_needs.march") do
+        Ok(s) -> string_byte_length(s)
+        Err(_) -> 0
+      end
+    end
+  end
+
+  mod Sim do
+    cap deterministic
+    needs IO.Clock
+    fn now() : Int do
+      DateTime.now()
+    end
+  end
+
+  fn main(_c : Cap(IO)) : () do
+    println(int_to_string(Pure.read()))
+    println(int_to_string(Sim.now()))
+  end
+end

@@ -1,0 +1,13 @@
+mod RecordUpdate do
+  needs IO.Console
+
+  fn f() : Int do
+    let r = { x: 1 }
+    let s = { r with x: 2 }
+    (s.x + 1)
+  end
+
+  fn main(_c : Cap(IO.Console)) do
+    IO.puts(int_to_string(f()))
+  end
+end

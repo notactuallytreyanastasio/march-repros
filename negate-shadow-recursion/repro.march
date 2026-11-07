@@ -1,0 +1,16 @@
+-- A user fn named `negate`, called explicitly. No prefix minus anywhere.
+-- The println and the two call sites keep it from being inlined; once
+-- inlined, the call the JS emitter mishandles is gone.
+mod Repro do
+  needs IO.Console
+
+  fn negate(s : String) : String do
+    println("called")
+    s ++ "!"
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(negate("a"))
+    println(negate("b"))
+  end
+end

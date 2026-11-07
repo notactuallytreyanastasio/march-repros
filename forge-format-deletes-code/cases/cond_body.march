@@ -1,0 +1,8 @@
+mod X do
+  fn f(x : Int) : Int do
+    match do
+      x > 0 -> 1
+      true -> 2
+    end
+  end
+end

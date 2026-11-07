@@ -1,0 +1,14 @@
+-- Control: wrong_answer.march without any Pair comparison. Triple gets its own helper.
+mod Main do
+  needs IO.Console
+
+  type Triple = { c : Int, d : Int, e : Int }
+  derive Eq for Triple
+
+  fn main(_cap : Cap(IO.Console)) : () do
+    let t1 : Triple = { c: 1, d: 2, e: 3 }
+    let t2 : Triple = { c: 1, d: 2, e: 4 }
+    println(to_string(t1 == t2))
+    println(to_string(t1 != t2))
+  end
+end

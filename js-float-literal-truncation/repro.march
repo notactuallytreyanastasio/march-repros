@@ -1,0 +1,18 @@
+-- Float values that reach the JS emitter as literals lose precision.
+-- string_to_float parses at run time, so it is the exact reference value.
+mod Repro do
+  needs IO.Console
+
+  fn check(label : String, x : Float, exact : String) : () do
+    let verdict = if Some(x) == string_to_float(exact) do "exact" else "WRONG" end
+    println(label ++ ": " ++ verdict)
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    check("source literal", 3.141592653589793, "3.141592653589793")
+    check("Math.pi", Math.pi(), "3.141592653589793")
+    check("Math.tau", Math.tau(), "6.283185307179586")
+    check("folded 1.0 /. 240.0", 1.0 /. 240.0, "0.004166666666666667")
+    println("sin(pi): " ++ float_to_string(Math.sin(Math.pi())))
+  end
+end

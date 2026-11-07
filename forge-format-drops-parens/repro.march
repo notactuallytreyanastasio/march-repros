@@ -1,0 +1,5 @@
+mod Repro do
+  fn pick(x : Int) : Int do
+    1 + (if x > 0 do 1 else 0 end)
+  end
+end

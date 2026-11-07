@@ -1,0 +1,19 @@
+-- Control: `negate` in a nested module has a qualified TIR name, so the JS
+-- emitter's bare-name match misses it. Correct on every backend.
+mod ControlNested do
+  needs IO.Console
+
+  mod V do
+    needs IO.Console
+
+    fn negate(s : String) : String do
+      println("called")
+      s ++ "!"
+    end
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(V.negate("a"))
+    println(V.negate("b"))
+  end
+end

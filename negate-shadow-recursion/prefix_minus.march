@@ -1,0 +1,16 @@
+-- Same thing through prefix minus, which the parser lowers to a call of
+-- `negate`. A result that looks plausible, so nothing flags it.
+mod PrefixMinus do
+  needs IO.Console
+
+  fn negate(x : Int) : Int do
+    println("called")
+    x + 10
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let y = 5
+    println(int_to_string(-y))
+    println(int_to_string(-y))
+  end
+end

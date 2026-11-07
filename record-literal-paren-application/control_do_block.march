@@ -1,0 +1,12 @@
+mod ControlDoBlock do
+  needs IO.Console
+
+  -- Same as do_block_silent.march, with `)` as the last token of the `let`.
+  fn main(_c : Cap(IO.Console)) do
+    let g = (do
+      fn s -> IO.puts("g called with: " ++ s)
+    end)
+    ("discarded")
+    IO.puts("end")
+  end
+end

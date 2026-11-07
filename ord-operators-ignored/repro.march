@@ -1,0 +1,43 @@
+-- `<`, `<=`, `>`, `>=` on a type with an `Ord` impl. Expected on every backend:
+-- the same as `compare(a, b) <op> 0`, as control.march computes it.
+mod Repro do
+  needs IO.Console
+
+  type Color = Red | Green
+  derive Eq, Ord for Color
+
+  type Point = { x : Int, y : Int }
+  derive Eq, Ord for Point
+
+  -- Several constructors with payloads: constructor order decides.
+  type Shape = Ci(Int) | Sq(Int)
+  derive Eq, Ord for Shape
+
+  -- Not derived: the operator ignores a hand-written impl too.
+  type Size = Small | Large
+  impl Eq(Size) do
+    fn eq(a, b) do rank(a) == rank(b) end
+  end
+  impl Ord(Size) do
+    fn compare(a, b) do rank(a) - rank(b) end
+  end
+  fn rank(s : Size) : Int do
+    match s do
+      | Small -> 0
+      | Large -> 1
+    end
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let p : Point = { x: 1, y: 2 }
+    let q : Point = { x: 1, y: 3 }
+    println("Red < Green     " ++ bool_to_string(Red < Green))
+    println("Green > Red     " ++ bool_to_string(Green > Red))
+    println("Green <= Red    " ++ bool_to_string(Green <= Red))
+    println("Red >= Green    " ++ bool_to_string(Red >= Green))
+    println("p < q           " ++ bool_to_string(p < q))
+    println("Small < Large   " ++ bool_to_string(Small < Large))
+    println("Ci(1) < Sq(1)   " ++ bool_to_string(Ci(1) < Sq(1)))
+    println("Ci(1) >= Sq(1)  " ++ bool_to_string(Ci(1) >= Sq(1)))
+  end
+end

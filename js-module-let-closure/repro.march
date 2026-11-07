@@ -1,0 +1,12 @@
+-- A `let` in a nested module. Prints 7 everywhere except --target js.
+mod Main do
+  needs IO.Console
+
+  mod Cst do
+    let n = 7
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(int_to_string(Cst.n))
+  end
+end

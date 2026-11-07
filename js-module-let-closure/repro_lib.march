@@ -1,0 +1,11 @@
+-- The same bug from a MARCH_LIB_PATH module, and from inside that module.
+-- Cst.via_literal() is the control: a plain fn returns the right value.
+mod Main do
+  needs IO.Console
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(int_to_string(Cst.n))
+    println(int_to_string(Cst.via_let()))
+    println(int_to_string(Cst.via_literal()))
+  end
+end

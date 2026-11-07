@@ -1,0 +1,17 @@
+-- Control, built with --target js: same shape, with a stdlib wrapper over a non-foreign capability. The ceiling rejects it.
+mod Main do
+  needs IO
+
+  mod Pure do
+    fn f() : Int do
+      match File.read("x") do
+        Ok(_) -> 1
+        Err(_) -> 0
+      end
+    end
+  end
+
+  fn main(_c : Cap(IO)) : () do
+    println(int_to_string(Pure.f()))
+  end
+end

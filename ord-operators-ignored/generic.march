@@ -1,0 +1,14 @@
+-- The same operator reached through a generic function: the operand type is
+-- still a variable where `a < b` is written. Expected on every backend: true.
+mod Generic do
+  needs IO.Console
+
+  type Color = Red | Green
+  derive Eq, Ord for Color
+
+  fn lt(a, b) when Ord(a) do a < b end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println("lt(Red, Green)  " ++ bool_to_string(lt(Red, Green)))
+  end
+end

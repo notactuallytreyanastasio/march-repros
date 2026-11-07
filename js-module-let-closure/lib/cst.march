@@ -1,0 +1,5 @@
+mod Cst do
+  let n = 7
+  fn via_let() : Int do n end
+  fn via_literal() : Int do 7 end
+end

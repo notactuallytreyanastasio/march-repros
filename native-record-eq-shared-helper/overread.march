@@ -1,0 +1,18 @@
+-- Triple's == is emitted first; Pair's == then loads a third field from a two-field record.
+mod Main do
+  needs IO.Console
+
+  type Pair = { a : Int, b : Int }
+  derive Eq for Pair
+  type Triple = { c : Int, d : Int, e : Int }
+  derive Eq for Triple
+
+  fn main(_cap : Cap(IO.Console)) : () do
+    let t1 : Triple = { c: 1, d: 2, e: 3 }
+    let t2 : Triple = { c: 1, d: 2, e: 3 }
+    let p1 : Pair = { a: 1, b: 2 }
+    let p2 : Pair = { a: 1, b: 2 }
+    println(to_string(t1 == t2))
+    println(to_string(p1 == p2))
+  end
+end

@@ -1,0 +1,15 @@
+mod Repro do
+  needs IO.Console
+
+  fn add1(n : Int) : Int do
+    n + 1
+  end
+
+  fn run(x : Int) : Int do
+    (if x > 0 do add1 else add1 end)(5)
+  end
+
+  fn main(_console : Cap(IO.Console)) : () do
+    println(int_to_string(run(1)))
+  end
+end

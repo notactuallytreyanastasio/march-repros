@@ -1,0 +1,13 @@
+-- Same generic function, asked through `compare`.
+mod GenericControl do
+  needs IO.Console
+
+  type Color = Red | Green
+  derive Eq, Ord for Color
+
+  fn lt(a, b) when Ord(a) do compare(a, b) < 0 end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println("lt(Red, Green)  " ++ bool_to_string(lt(Red, Green)))
+  end
+end

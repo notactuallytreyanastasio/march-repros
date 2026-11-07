@@ -1,0 +1,14 @@
+-- `-x` in tail position compiles with no diagnostic. The body calls itself
+-- with the same argument: native loops forever, the interpreter overflows
+-- its stack, and JS prints -2 only because it drops the user fn.
+mod TailMinus do
+  needs IO.Console
+
+  fn negate(x : Int) : Int do
+    -x
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(int_to_string(negate(2)))
+  end
+end

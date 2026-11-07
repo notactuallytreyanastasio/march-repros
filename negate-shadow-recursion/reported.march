@@ -1,0 +1,13 @@
+-- The program as first reported ("never terminates"). It does not compile:
+-- the capture is caught as a non-tail self call, at the `-1.0`.
+mod Reported do
+  needs IO.Console
+
+  fn negate(x : Float) : Float do
+    x *. -1.0
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    println(float_to_string(negate(2.0)))
+  end
+end

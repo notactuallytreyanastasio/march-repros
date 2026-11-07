@@ -1,0 +1,9 @@
+mod X do
+  fn g(n : Int) : Int do
+    let r = match n do
+      0 -> 1
+      _ -> 2
+    end
+    r
+  end
+end

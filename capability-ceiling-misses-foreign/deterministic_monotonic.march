@@ -1,0 +1,29 @@
+-- `cap deterministic` is documented to ban monotonic-clock reads. Both reads below are accepted.
+mod Main do
+  needs IO.Console
+
+  mod Sim do
+    cap deterministic
+    fn direct() : Int do
+      sys_uptime_ms()
+    end
+    fn wrapped() : Int do
+      System.monotonic_time()
+    end
+  end
+
+  fn spin(n : Int, acc : Int) : Int do
+    if n == 0 do acc else spin(n - 1, acc + n % 7) end
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let a = Sim.direct()
+    let b = Sim.wrapped()
+    let w = spin(300000000, 0)
+    let c = Sim.direct()
+    let d = Sim.wrapped()
+    println(int_to_string(a) ++ " " ++ int_to_string(b))
+    println(int_to_string(c) ++ " " ++ int_to_string(d))
+    println(int_to_string(w))
+  end
+end

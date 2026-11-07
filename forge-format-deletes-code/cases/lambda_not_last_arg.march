@@ -1,0 +1,10 @@
+mod X do
+  fn h(f : Int -> Int, n : Int) : Int do
+    f(n)
+  end
+  fn g(n : Int) : Int do
+    h(fn x ->
+      let y = x + 1
+      y, n)
+  end
+end

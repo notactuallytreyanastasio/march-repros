@@ -1,0 +1,8 @@
+mod Repro do
+  fn pick(x : Int) : Int do
+    1 + (match x do
+      0 -> 10
+      _ -> 20
+    end)
+  end
+end

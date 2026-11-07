@@ -1,0 +1,18 @@
+-- Strs's == is emitted first; Pair's == then runs march_string_eq on Int fields.
+mod Main do
+  needs IO.Console
+
+  type Strs = { f : String, g : String }
+  derive Eq for Strs
+  type Pair = { a : Int, b : Int }
+  derive Eq for Pair
+
+  fn main(_cap : Cap(IO.Console)) : () do
+    let s1 : Strs = { f: "x", g: "y" }
+    let s2 : Strs = { f: "x", g: "y" }
+    let p1 : Pair = { a: 1, b: 2 }
+    let p2 : Pair = { a: 1, b: 2 }
+    println(to_string(s1 == s2))
+    println(to_string(p1 == p2))
+  end
+end

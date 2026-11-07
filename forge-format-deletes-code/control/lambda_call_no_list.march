@@ -1,0 +1,7 @@
+mod X do
+  fn g(xs : List(Int)) : List(Int) do
+    List.map(xs, fn x ->
+      let y = x + 1
+      y)
+  end
+end
