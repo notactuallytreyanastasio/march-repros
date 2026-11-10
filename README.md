@@ -35,3 +35,4 @@ MARCH_BIN=/path/to/march/bin ./run.sh
 | [`float-add-zero-keeps-negative-zero`](float-add-zero-keeps-negative-zero/) | Compiled `x +. 0.0` keeps a negative zero on native and JS | [march#1185](https://github.com/march-language/march/issues/1185) |
 | [`json-control-escape`](json-control-escape/) | Json.to_string leaves U+0000-U+001F (except \b\t\n\f\r) unescaped | [march#1193](https://github.com/march-language/march/issues/1193) |
 | [`type-name-captured-across-modules`](type-name-captured-across-modules/) | A local type named like another module's type is substituted into that module's record fields (and can hang the build) | [march#1199](https://github.com/march-language/march/issues/1199) |
+| [`float-to-int-out-of-range`](float-to-int-out-of-range/) | float_to_int, float_floor and friends return garbage for NaN, infinities and values outside Int's range | [march#1230](https://github.com/march-language/march/issues/1230) |
