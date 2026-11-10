@@ -1,0 +1,29 @@
+-- In-range Float -> Int conversions. These agree on every target.
+mod Control do
+  needs IO.Console
+
+  fn parse(s : String) : Float do
+    match string_to_float(s) do
+    Some(v) -> v
+    None -> 0.0
+    end
+  end
+
+  fn row(label : String, x : Float) : () do
+    println(label
+      ++ "  to_int=" ++ int_to_string(float_to_int(x))
+      ++ " truncate=" ++ int_to_string(float_truncate(x))
+      ++ " floor=" ++ int_to_string(float_floor(x))
+      ++ " ceil=" ++ int_to_string(float_ceil(x))
+      ++ " round=" ++ int_to_string(float_round(x)))
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    row("2.5", parse("2.5"))
+    row("-2.5", parse("-2.5"))
+    row("0.0", parse("0.0"))
+    row("1e15", parse("1e15"))
+    row("2^53", parse("9007199254740992"))
+    row("-2^53", parse("-9007199254740992"))
+  end
+end

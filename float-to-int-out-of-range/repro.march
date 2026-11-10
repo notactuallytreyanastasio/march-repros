@@ -1,0 +1,35 @@
+-- Float -> Int conversions on values that do not fit in Int.
+-- Inputs are parsed at run time so opt.fold cannot see them.
+-- "Infinity" is the spelling string_to_float accepts on every target (#1178),
+-- and NaN is computed because no string parses to NaN on --target js.
+mod Repro do
+  needs IO.Console
+
+  fn parse(s : String) : Float do
+    match string_to_float(s) do
+    Some(v) -> v
+    None -> 0.0
+    end
+  end
+
+  fn row(label : String, x : Float) : () do
+    println(label
+      ++ "  to_int=" ++ int_to_string(float_to_int(x))
+      ++ " truncate=" ++ int_to_string(float_truncate(x))
+      ++ " floor=" ++ int_to_string(float_floor(x))
+      ++ " ceil=" ++ int_to_string(float_ceil(x))
+      ++ " round=" ++ int_to_string(float_round(x)))
+  end
+
+  fn main(_c : Cap(IO.Console)) : () do
+    let inf = parse("Infinity")
+    row("1e20", parse("1e20"))
+    row("-1e20", parse("-1e20"))
+    row("2^62", parse("4611686018427387904"))
+    row("2^63", parse("9223372036854775808"))
+    row("-2^63", parse("-9223372036854775808"))
+    row("nan", inf -. inf)
+    row("inf", inf)
+    row("-inf", 0.0 -. inf)
+  end
+end
